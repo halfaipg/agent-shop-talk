@@ -15,7 +15,6 @@ This platform is designed for enterprises that need robust, scalable infrastruct
 The Model Context Protocol (MCP) Proxy Server is the core component that aggregates and serves multiple MCP resource servers through a single interface. It acts as a central hub that:
 
 - Connects to and manages multiple MCP resource servers
-- Discovers and exposes tools from all connected servers
 - Routes tool requests to the appropriate backend servers
 - Provides a unified WebSocket interface for clients
 - Logs all tool discovery and execution activities
@@ -25,6 +24,32 @@ The MCP Proxy Server supports multiple transport types:
 - **Command-based servers**: Started as child processes with stdin/stdout communication
 - **WebSocket-based servers**: Connected to via WebSocket protocol
 - **HTTP-based servers**: Connected to via HTTP API calls
+
+### Tool Directory
+
+The Tool Directory is a central registry where tools from various MCP servers are cataloged and made available for discovery:
+
+- **Automatic Tool Discovery**: When an MCP server connects to the proxy, its tools are automatically added to the directory
+- **Dynamic Updates**: Tools are added or removed as MCP servers connect or disconnect
+- **Tool Metadata**: Each tool entry includes name, description, parameter schema, and return schema
+- **Hierarchical Namespacing**: Tools are organized by server (e.g., `calculator.add`, `weather.forecast`)
+
+Models can interact with the Tool Directory through the MCP Proxy Server's WebSocket interface:
+
+```python
+# List all available tools
+await ws.send(json.dumps({"type": "discover_tools"}))
+response = await ws.recv()
+tools = json.loads(response)["tools"]
+
+# Filter tools by capability
+calculator_tools = [tool for tool in tools if tool["name"].startswith("calculator.")]
+```
+
+New MCP servers can be added to the directory by:
+1. Adding their configuration to `config/mcp_proxy_config.json`
+2. Restarting the MCP Proxy Server, or
+3. Using the dynamic server registration API at runtime
 
 ### A2A Bulletin Board
 

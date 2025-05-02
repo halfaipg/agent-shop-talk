@@ -1,0 +1,20 @@
+# Add project dependencies here
+# Example:
+# fastapi==0.100.0
+# uvicorn[standard]==0.22.0
+
+# Core dependencies
+# These are commented out because they may cause build issues on some platforms
+# fastapi==0.104.1
+# uvicorn[standard]==0.23.2
+# pydantic==2.4.2
+# openapi-schema-pydantic==1.2.4
+# aiohttp==3.8.6
+
+# Essential dependencies
+python-dotenv==1.0.0
+requests>=2.31.0
+
+# For testing
+pytest==7.4.3
+pytest-asyncio==0.21.1 

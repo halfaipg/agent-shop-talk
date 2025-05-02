@@ -1,0 +1,28 @@
+{
+  "name": "calculator",
+  "description": "A tool that provides basic arithmetic operations (add, subtract, multiply, divide).",
+  "version": "0.1.0",
+  "author": "LLM Shop Talk Team",
+  "license": "MIT",
+  "requires": {
+    "python": ">=3.9"
+  },
+  "operations": [
+    {
+      "name": "add",
+      "description": "Add two numbers together"
+    },
+    {
+      "name": "subtract",
+      "description": "Subtract the second number from the first"
+    },
+    {
+      "name": "multiply",
+      "description": "Multiply two numbers together"
+    },
+    {
+      "name": "divide",
+      "description": "Divide the first number by the second"
+    }
+  ]
+} 

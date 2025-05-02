@@ -1,0 +1,26 @@
+{
+  "name": "tool_template",
+  "description": "A template for creating new tools.",
+  "parameters": {
+    "param1": {
+      "type": "string",
+      "description": "Description of parameter 1.",
+      "required": true
+    },
+    "param2": {
+      "type": "integer",
+      "description": "Description of parameter 2.",
+      "required": false
+    }
+  },
+  "returns": {
+    "status": {
+      "type": "string",
+      "description": "Execution status (e.g., success, failure)"
+    },
+    "message": {
+      "type": "string",
+      "description": "A message describing the result."
+    }
+  }
+} 

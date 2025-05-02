@@ -1,0 +1,25 @@
+{
+  "servers": [
+    {
+      "name": "Calculator Server",
+      "transport": {
+        "command": "python3",
+        "args": ["tools/calculator/calculator_server.py"],
+        "env": ["API_KEY"]
+      }
+    },
+    {
+      "name": "Weather Server",
+      "transport": {
+        "type": "sse",
+        "url": "ws://localhost:8766"
+      }
+    },
+    {
+      "name": "Text Analysis Server",
+      "transport": {
+        "url": "http://localhost:8767/api"
+      }
+    }
+  ]
+} 
